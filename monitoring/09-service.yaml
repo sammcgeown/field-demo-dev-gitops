@@ -1,0 +1,51 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: prometheus-service
+  namespace: monitoring
+  annotations:
+    metallb.universe.tf/allow-shared-ip: monitoring
+spec:
+  selector:
+    app: prometheus-server
+  ports:
+  - name: promui
+    protocol: TCP
+    port: 9090
+    targetPort: 9090
+  type: LoadBalancer
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: grafana-service
+  namespace: monitoring
+  annotations:
+    metallb.universe.tf/allow-shared-ip: monitoring
+spec:
+  selector:
+    app: grafana-server
+  ports:
+  - name: grafana-ui
+    protocol: TCP
+    port: 3000
+    targetPort: 3000
+  type: LoadBalancer
+
+# ---
+
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: prometheus-exporter
+#   namespace: monitoring
+# spec:
+#   selector:
+#     app: prometheus-exporter
+#   ports:
+#   - name: promexporter
+#     protocol: TCP
+#     port: 9100
+#     targetPort: 9100
