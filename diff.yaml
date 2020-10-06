@@ -1,0 +1,7 @@
+monitoring/01-namespace.yaml
+monitoring/02-roles.yaml
+monitoring/03-configmap.yaml
+monitoring/05-prometheus.yaml
+monitoring/06-grafana.yaml
+monitoring/07-kubestatemetrics.yaml
+monitoring/09-service.yaml
